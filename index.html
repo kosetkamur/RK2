@@ -13,19 +13,17 @@
 <body>
     <header>
         <nav>
-            <img srcset='' alt='logo'>
+            <img srcset ='loggotip.jpg 480w, loggotip1.jpg 2000w' alt='logo'>
             <div class='links'>
                 <a href='#main'>Главная</a>
                 <a href='#book'>Книги</a>
                 <a href='#app'>Добавить книгу</a>
-                <button class='blackWhite'>Тема</button>
-                <button class='svg'>
-                    <svg class='menu' width='50' height='30'  viewBox="0 0 100 100">
+                <button class='blackWhite theme-button'>Тема</button>
+                 <svg class='menu' width='50' height='30'  viewBox="0 0 100 100">
                         <rect x="5" y="10" width="250" height="13" fill="white" stroke="white" stroke-width="1"/>
                         <rect x="5" y="40" width="250" height="13" fill="white" stroke="white" stroke-width="1"/>
                         <rect x="5" y="70" width="250" height="13" fill="white" stroke="white" stroke-width="1"/>
                     </svg>
-                </button>
             </div>
         </nav>
     </header>
@@ -40,23 +38,23 @@
         <img src='logo1.png' class='books' alt='book'>
         <div class='cards'>
             <div class='book'>
-                <img src='' alt='book' class='book__image'>
+                <img src='1.jpg' alt='book' class='book__image'>
                 <h3 class='book__title'>Великий Гэтсби</h3>
                 <p class='book__writer'>Фицджеральд Ф.С.</p>
                 <p class='book__genre'>Роман</p>
                 <p class='book__description'>В этой истории повествуется о великом человеке – господине Гэтсби, человеке из низкого сословия, который быстро разбогател и приобрёл немалое состояние.</p>
             </div>
             <div class='book'>
-                <img src='' alt='book' class='book__image'>
+                <img src='2.jpg' alt='book' class='book__image'>
                 <h3 class='book__title'>Унесенные ветром</h3>
                 <p class='book__writer'>Митчел М.</p>
                 <p class='book__genre'>Роман</p>
                 <p class='book__description'>В этой истории повествуется о великом человеке – господине Гэтсби, человеке из низкого сословия, который быстро разбогател и приобрёл немалое состояние.</p>
             </div>
             <div class='book'>
-                <img src='' alt='book' class='book__image'>
-                <h3 class='book__title'>Великий Гэтсби</h3>
-                <p class='book__writer'>Фицджеральда Ф.С.</p>
+                <img src='3.jpg' alt='book' class='book__image'>
+                <h3 class='book__title'>Джейн Эйр</h3>
+                <p class='book__writer'>Бронте Ш.</p>
                 <p class='book__genre'>Роман</p>
                 <p class='book__description'>В этой истории повествуется о великом человеке – господине Гэтсби, человеке из низкого сословия, который быстро разбогател и приобрёл немалое состояние.</p>
             </div>
@@ -68,16 +66,18 @@
             <div class='add__form'>
                 <form>    
                         <label for='name' hidden></label>
-                        <input type='text' v-model="name"  required id='name' placeholder='Название'>
+                        <input type='text' v-model="name"  class='xxx' required id='name' placeholder='Название'>
                 
                         <label for='writer' hidden></label>
-                        <input type='text' v-model="writer" required id='writer' placeholder='Писатель'>
+                        <input type='text' v-model="writer" class='xxx' required id='writer' placeholder='Писатель'>
 
-                        <label for='genre' hidden></label>
-                        <input type='text' v-model="genre" required id='genre' placeholder='Жанр'>
+                        <label for='genre'>Жанр</label>
+                        <p><input type="checkbox" name="first" value="Роман"> Роман</p>
+                        <p><input type="checkbox" name="second" value="Фантастика"> Фантастика</p>
+                        <p><input type="checkbox" name="third" value="Детектив">Детектив</p>
 
                         <label for='text' hidden></label>
-                        <textarea rows="10" cols="45" name="text" v-model="text" required id='text' placeholder='Описание'></textarea>
+                        <textarea rows="10" cols="45" class='xxx' name="text" v-model="text" required id='text' placeholder='Описание'></textarea>
 
                         <button class='submit' @click='clickfunction' :disabled="isDisabled">Добавить</button>
                 </form>
@@ -95,9 +95,9 @@
     <footer>
         <p class='name'>@Максименко Наталия 201-322 01.06.2021</p>
     </footer>
+ 
 
-
-    <script type='text/javascript'>
+    <script>
         var app=new Vue({
            el:'#app',
            data: {
