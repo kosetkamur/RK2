@@ -10,11 +10,12 @@ html, body{
 }
 h1{
     font-size: 3rem;
-    color: white;
+    color: black;
 }
 .mainthing p{
-    color: white;
+    color: black;
     font-size: 1rem;
+    font-weight: 800;
 }
 a{
     color:white;
@@ -43,7 +44,29 @@ button{
 .books{
     width: 100px;
     padding: 10px 195px;
+    transition: 1s ease-out;
+    animation: rotate 3s ease infinite alternate;
 }
+.book__image{
+    width: 180px;
+}
+@keyframes rotate {
+    0%{
+      transform: rotate(0);
+    }
+    25%{
+      transform: rotate(90deg);
+    }
+    50%{
+      transform: rotate(180deg);
+    }
+    75%{
+      transform: rotate(270deg);
+    }
+    100%{
+      transform: rotate(360deg);
+    }
+  }
 .svg{
     width: max-content;
     background: transparent;
@@ -57,7 +80,7 @@ header, footer{
     padding: 20px 195px;
 }
 main{
-    background-image: url(header.png);
+    background: #FCBF49;
     background-repeat: no-repeat;
     background-size: cover;
     padding: 250px 195px;
@@ -76,7 +99,6 @@ h2{
 .cards{
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     padding: 20px 195px;
 }
 form{
@@ -87,7 +109,9 @@ form{
     width: 300px;
 }
 input, textarea{
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    border: 1px solid rgb(107, 107, 107);
+    border-radius: 5px;
 }
 .add{
     display: flex;
@@ -106,6 +130,9 @@ input, textarea{
 .name{
     color:white;
 }
+.xxx input{
+    width: 10px;
+}
 @media screen and (max-width: 800px) {
     section{
         margin: 20px;
@@ -121,10 +148,13 @@ input, textarea{
         flex-direction: column;
         padding: 0;
     }
-    form{
-        padding: 0;
+    form,footer{
+        padding: 10px 0;
     }
-    input, textarea{
+    .xxx{
         width: 200px;
+    }
+    .book{
+        margin:0;
     }
 }
