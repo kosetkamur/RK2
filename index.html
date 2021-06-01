@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link rel='stylesheet' href='style.css' type='text/css'>
+    <title>Главная</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <img srcset='' alt='logo'>
+            <div class='links'>
+                <a href='#main'>Главная</a>
+                <a href='#book'>Книги</a>
+                <a href='#app'>Добавить книгу</a>
+                <button class='blackWhite'>Тема</button>
+                <button class='svg'>
+                    <svg class='menu' width='50' height='30'  viewBox="0 0 100 100">
+                        <rect x="5" y="10" width="250" height="13" fill="white" stroke="white" stroke-width="1"/>
+                        <rect x="5" y="40" width="250" height="13" fill="white" stroke="white" stroke-width="1"/>
+                        <rect x="5" y="70" width="250" height="13" fill="white" stroke="white" stroke-width="1"/>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+    <main id='main'>
+        <div class='mainthing'>
+            <h1>Подборка ваших любимых книг</h1>
+            <p>Переходи и добавляй свои любимые книги</p>
+        </div>
+    </main>
+    <section id='book'>
+        <h2>Подборка книг</h2>
+        <img src='logo1.png' class='books' alt='book'>
+        <div class='cards'>
+            <div class='book'>
+                <img src='' alt='book' class='book__image'>
+                <h3 class='book__title'>Великий Гэтсби</h3>
+                <p class='book__writer'>Фицджеральд Ф.С.</p>
+                <p class='book__genre'>Роман</p>
+                <p class='book__description'>В этой истории повествуется о великом человеке – господине Гэтсби, человеке из низкого сословия, который быстро разбогател и приобрёл немалое состояние.</p>
+            </div>
+            <div class='book'>
+                <img src='' alt='book' class='book__image'>
+                <h3 class='book__title'>Унесенные ветром</h3>
+                <p class='book__writer'>Митчел М.</p>
+                <p class='book__genre'>Роман</p>
+                <p class='book__description'>В этой истории повествуется о великом человеке – господине Гэтсби, человеке из низкого сословия, который быстро разбогател и приобрёл немалое состояние.</p>
+            </div>
+            <div class='book'>
+                <img src='' alt='book' class='book__image'>
+                <h3 class='book__title'>Великий Гэтсби</h3>
+                <p class='book__writer'>Фицджеральда Ф.С.</p>
+                <p class='book__genre'>Роман</p>
+                <p class='book__description'>В этой истории повествуется о великом человеке – господине Гэтсби, человеке из низкого сословия, который быстро разбогател и приобрёл немалое состояние.</p>
+            </div>
+        </div>
+    </section>
+    <section id='app'>
+        <h2>Добавить книгу</h2>
+        <div class='add'>
+            <div class='add__form'>
+                <form>    
+                        <label for='name' hidden></label>
+                        <input type='text' v-model="name"  required id='name' placeholder='Название'>
+                
+                        <label for='writer' hidden></label>
+                        <input type='text' v-model="writer" required id='writer' placeholder='Писатель'>
+
+                        <label for='genre' hidden></label>
+                        <input type='text' v-model="genre" required id='genre' placeholder='Жанр'>
+
+                        <label for='text' hidden></label>
+                        <textarea rows="10" cols="45" name="text" v-model="text" required id='text' placeholder='Описание'></textarea>
+
+                        <button class='submit' @click='clickfunction' :disabled="isDisabled">Добавить</button>
+                </form>
+            </div>
+        
+            <div class='newCard'>
+                <h3>Новая книга</h3> 
+                <ul  v-if="spisok.length">
+                    <li  v-for="(item, index) in spisok" :key="index">{{item}}</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p class='name'>@Максименко Наталия 201-322 01.06.2021</p>
+    </footer>
+
+
+    <script type='text/javascript'>
+        var app=new Vue({
+           el:'#app',
+           data: {
+               spisok: [],
+               name: '',
+               writer: '',
+               genre: '',
+               text: ''       
+           },
+           methods: { clickfunction(){
+               let name = this.name[0].toUpperCase() + this.name.toLowerCase().slice(1);
+               let writer = this.writer[0].toUpperCase() + this.writer.toLowerCase().slice(1);
+               let genre = this.genre[0].toUpperCase() + this.genre.toLowerCase().slice(1);
+               let text = this.text[0].toUpperCase() + this.text.toLowerCase().slice(1);
+               let spisok = `${name} ${writer} ${genre} ${text}`
+               this.spisok.push(spisok)
+               this.name = ''
+               this.writer = ''
+               this.genre = ''
+               this.text = ''
+                                    }
+           },
+           computed: {
+                       isDisabled() {
+                           if (this.name.length === 0 || this.writer.length === 0 || this.genre.length === 0 || this.text.length === 0) {return true}
+                           else {return false} 
+                       }
+                   }
+       })
+       </script>
+</body>
+</html>
